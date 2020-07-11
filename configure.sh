@@ -129,11 +129,11 @@ tmuxTpmInstall () {
 fubectlInstall () {
     # fubectl install
     # todo - move to after ~/bin check on bootstrap
-    if [ -f "$HOME/bin/fubectl.source" ]; then
+    if [ -f "$HOME/.fubectl.source" ]; then
         info 'fubectl.source already exists'
     else
         echo "Now installing fubectl..."
-        curl -o "$HOME/bin/fubectl.source" -LO https://rawgit.com/kubermatic/fubectl/master/fubectl.source && success "fubectl placed in $HOME/bin"
+        curl -o "$HOME/.fubectl.source" -LO https://rawgit.com/kubermatic/fubectl/master/fubectl.source && success "fubectl placed in $HOME/bin"
     fi
 }
 
@@ -233,6 +233,6 @@ else
 	echo ''
 	echo "source $HOME/.oh-my-zsh/custom/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh" >> ${ZDOTDIR:-$HOME}/.zshrc && echo "added zsh-autosuggestions to .zshrc..."
 	echo ''
-    echo "[ -f ~/bin/fubectl.source ] && source ~/bin/fubectl.source" >> ${ZDOTDIR:-$HOME}/.zshrc && echo "added fubectl to .zshrc..."
+    echo "[ -f ~/.fubectl.source ] && source ~/.fubectl.source" >> ${ZDOTDIR:-$HOME}/.zshrc && echo "added fubectl to .zshrc..."
 	
 fi
