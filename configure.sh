@@ -6,16 +6,8 @@ source /dev/stdin <<< "$(curl -fsSL https://raw.githubusercontent.com/jldeen/dot
 brewInstall () {
     # Install brew
     if test ! $(which brew); then
-    # Install the correct homebrew for each OS type
-        if test "$(uname)" = "Darwin"
-        then
-            ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-            success 'brew installed'
-        elif test "$(expr substr $(uname -s) 1 5)" = "Linux"
-        then
-            ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install)"
-            success 'brew installed'
-        fi
+      /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+      success 'brew installed'
     else
         info 'brew is already installed'
     fi
@@ -24,6 +16,11 @@ brewInstall () {
 brewUpdate () {
     brew update
     success 'brew updated'
+}
+
+brewBundle () {
+    brew bundle
+    success 'brew bundle installed'
 }
 
 zshInstall () {
